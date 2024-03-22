@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .navbar {
+      background-color: #007bff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 200px;
+    }
+
+    .search-btn {
+      padding: 8px 15px;
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .people-content-btn {
+      padding: 8px 15px;
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .logout-btn {
+      padding: 8px 15px;
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .card {
+      width: calc(33.33% - 20px);
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .name {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .address {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .total-user {
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      flex-grow: 1; /* Membuat total user menempati ruang yang tersisa di navbar */
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div>
+      <a href="/post" class="navbar-brand">Cwitter</a>
+      <a href="/myprofiles/<%= id %>" class="people-content-btn">My Profile</a>
+      <a href="/post" class="people-content-btn">People Content</a>
+      <a href="/profiles" class="people-content-btn">All User</a>
+    </div>
+    <span class="total-user">Total User: <%= totalUser %></span> 
+    <form action="#" method="GET" class="search-form">
+      <input type="text" name="search" class="search-input" placeholder="Search...">
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+    <a style="text-decoration: none;" href="/logout" class="logout-btn">Logout</a>
+  </nav>
+
+  <div class="container">
+    <% data.forEach((e)=> { %>
+        <div class="card">
+          <img src="<%= e.photoProfile %>" alt="Profile Photo">
+          <div class="card-content">
+            <h2 class="name"><%= e.name %></h2>
+            <p class="address"><%= e.street %></p>
+            <a href="/profiles/<%= e.id %>"><button>Details</button></a>
+            <% if (error) { %>
+              <p class="error-msg"><%= error%>!!!</p>
+            <%} %>
+          </div>
+        </div>
+        <% }) %>
+  </div>
+</body>
+
+</html>

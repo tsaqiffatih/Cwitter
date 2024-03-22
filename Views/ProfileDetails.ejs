@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .navbar {
+      background-color: #007bff;
+      padding: 10px 20px;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      /* Penambahan margin di sini */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      width: 300px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      /* Penambahan margin di sini */
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .name {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .address {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .tweet {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .tweet-text {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .tweet-author {
+      font-size: 16px;
+      color: #666;
+      margin: 1px;
+    }
+
+    .form-container {
+      width: 100%;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container textarea {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="submit"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-container input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-container input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/post" class="navbar-brand">Cwitter</a>
+  </nav>
+  <% data.forEach((e)=> { %>
+  <div class="container">
+        <div class="card">
+          <img src="<%= e.photoProfile %>" alt="Profile Photo">
+          <div class="card-content">
+            <h2 class="name"><%= e.name %></h2>
+            <p class="address"><%= e.address %></p>
+            <p class="address"><%= e.userName %></p>
+            <p class="address"><%= user.email %></p>
+            <p class="address"><%= user.role %></p>
+          </div>
+        </div>
+      </div>
+        <div class="tweet">
+          <% e.Posts.forEach(i => { %>
+            <p class="tweet-text"><%= i.content %></p>
+            <% i.Tags.forEach(j => { %>
+              <span class="tweet-text"><%= j.hashTag %></span>
+              <% }); %>
+              <a href="/profiles/<%= e.id %>"><p class="tweet-author">Posted by <%= e.name %></p></a>
+              <p class="tweet-author"><%= published(i.createdAt) %></p>
+          <% }); %>
+        </div>
+    <% }) %>
+  </body>
+</html>

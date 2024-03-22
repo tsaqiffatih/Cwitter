@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Cwitter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(https://img.freepik.com/premium-photo/twitter-logo-with-space-text-graphics-blue-background-3d-rendering_494516-336.jpg?w=1060);
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Register to Cwitter</h2>
+
+    <form action="/register" method="post">
+      <input type="email" name="email" placeholder="Enter your email">
+      <input type="password" name="password" placeholder="Enter your password">
+      <input type="text" name="name" placeholder="Enter your fullname">
+      <input type="text" name="address" placeholder="Enter your address">
+      <input type="submit" value="Register">
+      <br><br>
+      <span>Already have an account? Login <a style="text-decoration: none;" href="/login">"Here"</a></span><br>
+      <span>Back to <a style="text-decoration: none;" href="/">"Home"</a></span>
+    </form>
+  </div>
+</body>
+
+</html>
